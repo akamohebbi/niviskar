@@ -1,0 +1,160 @@
+/*
+    elements
+*/
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-size: 1.1em;
+}
+
+
+/*
+    dialog
+*/
+
+#dialog {
+    display: none;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    color: #fff;
+
+    .w3-display-container {
+        height: 100%;
+        background-color: rgba($color: #000000, $alpha: 0.32);
+    }
+
+    .w3-display-middle {
+        max-width: 512px;
+        background-color: white;
+        color: black;
+        border-radius: 8px;
+        border: 1px solid #eee;
+    }
+
+    #dialog_header {
+        background-color: #f9f9f9;
+        border: 1px solid #eee;
+        border-radius: 4px 4px 0 0;
+        padding: 8px 16px;
+        font-weight: bold;
+        font-size: 1.28em;
+        color: #333;
+    }
+
+    #dialog_close_btn {
+        float: left;
+        color: #ccc;
+        font-size: 0.9em;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    #dialog_content {
+        padding: 16px;
+        font-size: .9em;
+    }
+}
+
+
+/*
+    toast
+*/
+
+#toast {
+    display: none;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    color: #fff;
+
+    .w3-display-container {
+        height: 100%;
+    }
+
+    p {
+        background-color: black;
+        font-size: 1.28em;
+        padding: 16px;
+        border-radius: 4px;
+    }
+}
+
+
+/*
+    preloader
+*/
+
+#preloader {
+    height: 100%;
+
+    .w3-display-container {
+        height: 100%;
+    }
+
+    p {
+        margin: 0;
+        font-weight: bold;
+        font-size: 3.2em;
+    }
+}
+
+
+
+/*
+    wrapper
+*/
+
+#wrapper {
+    height: 100%;
+    display: none;
+}
+
+
+
+/*
+    toolbar
+*/
+
+#toolbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: azure;
+    border-bottom: 1px solid #eee;    
+    padding: 16px;
+}
+
+
+
+/*
+    editor
+*/
+
+#editor {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid #eee;    
+    padding: 16px;
+    outline: none;
+    overflow-y: scroll;
+}
