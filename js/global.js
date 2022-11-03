@@ -3,6 +3,23 @@ var dialog_content = document.getElementById("dialog_content");
 
 var front_matter = "";
 
+var flag_view_mode = "wysiwyg";
+
+
+
+/*
+    convert html to markdown
+*/
+
+var turndownService = new TurndownService({ 
+    headingStyle: 'atx', 
+    hr: '---', 
+    codeBlockStyle: 'fenced', 
+    linkStyle: 'referenced'
+});
+
+var converter = new showdown.Converter({"metadata": true});
+
 
 
 /*
@@ -56,6 +73,7 @@ function dialog(title, msg, content_editable=false, width=512, on_closed=functio
 
     document.getElementById("dialog_close_btn").onclick = function() {
         document.getElementById("dialog").style.display = "none";
+        editor.focus();
         on_closed();
     }
 }
@@ -79,6 +97,14 @@ for (var i = 0; i < actions.length; i++) {
                 toast("wekpfokwepfok");
                 break;
         
+            case "action_vm_wysiwyg":
+                vm_wysiwyg();
+                break;
+    
+            case "action_vm_markdown":
+                vm_markdown();
+                break;
+    
             case "action_about":
                 action_about();
                 break;
@@ -118,5 +144,43 @@ function action_fm() {
 
     dialog_content.onkeydown = function() {
         front_matter = this.innerText;
+    }
+}
+
+
+
+/*
+    action view mode wysiwyg
+*/
+
+function vm_wysiwyg() {
+    if (flag_view_mode == "markdown") {
+        editor.innerHTML = converter.makeHtml(editor.innerText);
+        editor.focus();
+
+        document.getElementById("action_vm_markdown").classList.remove("active");
+        document.getElementById("action_vm_wysiwyg").classList.add("active");
+
+        toast("حالت نمایش به WYSIWYG تغییر پیدا کرد!", 1500);
+        flag_view_mode = "wysiwyg";
+    }
+}
+
+
+
+/*
+    action view mode markdown
+*/
+
+function vm_markdown() {
+    if (flag_view_mode == "wysiwyg") {
+        editor.innerText = turndownService.turndown(editor.innerHTML);
+        editor.focus();
+
+        document.getElementById("action_vm_wysiwyg").classList.remove("active");
+        document.getElementById("action_vm_markdown").classList.add("active");
+
+        toast("حالت نمایش به Markdown تغییر پیدا کرد!", 1500);
+        flag_view_mode = "markdown";
     }
 }

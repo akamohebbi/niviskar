@@ -1,4 +1,104 @@
 /*
+    fonts
+*/
+
+/* arabic */
+@font-face {
+    font-family: 'Lalezar';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/lalezar/zrfl0HLVx-HwTP82YaL4IxL0.woff2') format('woff2');
+    unicode-range: 
+        U+0600-06FF, 
+        U+200C-200E, 
+        U+2010-2011, 
+        U+204F, 
+        U+2E41, 
+        U+FB50-FDFF, 
+        U+FE80-FEFC
+    ;
+}
+/* vietnamese */
+@font-face {
+    font-family: 'Lalezar';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/lalezar/zrfl0HLVx-HwTP82Yaj4IxL0.woff2') format('woff2');
+    unicode-range: 
+        U+0102-0103, 
+        U+0110-0111, 
+        U+0128-0129, 
+        U+0168-0169, 
+        U+01A0-01A1, 
+        U+01AF-01B0, 
+        U+1EA0-1EF9, 
+        U+20AB
+    ;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Lalezar';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/lalezar/zrfl0HLVx-HwTP82Yan4IxL0.woff2') format('woff2');
+    unicode-range: 
+        U+0100-024F, 
+        U+0259, 
+        U+1E00-1EFF, 
+        U+2020, 
+        U+20A0-20AB, 
+        U+20AD-20CF, 
+        U+2113, 
+        U+2C60-2C7F, 
+        U+A720-A7FF
+    ;
+}
+/* latin */
+@font-face {
+    font-family: 'Lalezar';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/lalezar/zrfl0HLVx-HwTP82Yaf4Iw.woff2') format('woff2');
+    unicode-range: 
+        U+0000-00FF, 
+        U+0131, 
+        U+0152-0153, 
+        U+02BB-02BC, 
+        U+02C6, 
+        U+02DA, 
+        U+02DC, 
+        U+2000-206F, 
+        U+2074, 
+        U+20AC, 
+        U+2122, 
+        U+2191, 
+        U+2193, 
+        U+2212, 
+        U+2215, 
+        U+FEFF, 
+        U+FFFD
+    ;
+}
+/* yekan */
+@font-face {
+	font-family: 'Yekan';
+	src: url( '../fonts/yekan/Yekan.eot' );
+	src: url( '../fonts/yekan/Yekan.eot?#iefix' ) format( 'embedded-opentype' ),
+		url( '../fonts/yekan/Yekan.woff2' ) format( 'woff2' ),
+		url( '../fonts/yekan/Yekan.woff' ) format( 'woff' ),
+		url( '../fonts/yekan/Yekan.ttf' ) format( 'truetype' ),
+		url( '../fonts/yekan/Yekan.svg#Yekan' ) format( 'svg' );
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+
+/*
     elements
 */
 
@@ -10,6 +110,16 @@ body {
 
 body {
     font-size: 1.1em;
+    font-family: 'Yekan', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Lalezar', sans-serif;
 }
 
 
@@ -143,15 +253,42 @@ body {
     background-color: azure;
     border-bottom: 1px solid #eee;    
     padding: 16px;
+
+    a {
+        text-decoration: none;
+        font-weight: bold;
+    }
 }
 
 #tools {
     float: left;
+    white-space: wrap;
+
+    button {
+        border: none;
+        margin-left: 8px;
+
+        &.active {
+            background-color: #333;
+            color: white;
+        }
+
+        &:last-child {
+            margin-left: 0;
+        }
+    }
 
     .action_group {
         display: inline-block;
+        margin-right: 8px;
+        margin-left: 8px;
 
         button {
+            margin-left: 0;
+
+            &:last-child {
+                margin-left: auto;
+            }
         }
     }
 }
@@ -172,4 +309,15 @@ body {
     padding: 16px;
     outline: none;
     overflow-y: scroll;
+    font-size: 1.28em;
+
+
+    pre {
+        direction: ltr;
+        text-align: left;
+        background-color: #f9f9f9;
+        border: 1px solid #eee;
+        padding: 16px;
+        font-size: .9em;
+    }
 }
