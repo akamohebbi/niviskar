@@ -23,12 +23,12 @@
 
     <div id="dialog">
         <div class="w3-display-container">
-            <div class="w3-display-middle">
+            <div class="w3-display-middle" id="dialog_wrapper">
                 <div id="dialog_header">
                     <span id="dialog_title"></span>
                     <span id="dialog_close_btn">x</span>
                 </div>
-                <div id="dialog_content" contenteditable="false">fweifioweiofhweiofhiwoehfiowehf</div>
+                <div id="dialog_content" contenteditable="false"></div>
             </div>
         </div>
     </div>
@@ -47,16 +47,15 @@
             <a href="#!">نویسکار</a>
 
             <nav id="tools">
+                <button class="action" id="action_fm">front matter</button>
+
                 <div class="action_group">
-                    <button id="action_xxx">x</button>
-                    <button id="action_xxx">x</button>
-                    <button id="action_xxx">x</button>
-                    <button id="action_xxx">x</button>
+                    <button class="action" id="action_bold">bold</button>
+                    <button class="action" id="action_italic">italic</button>
+                    <button class="action" id="action_underline">underline</button>
                 </div>
 
-                <button id="action_xxx">x</button>
-                <button id="action_xxx">x</button>
-                <button id="action_about">i</button>
+                <button class="action" id="action_about">i</button>
             </nav>
         </div>
         <div id="editor" contenteditable="true"></div>

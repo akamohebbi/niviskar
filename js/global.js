@@ -1,4 +1,7 @@
 var editor = document.getElementById("editor");
+var dialog_content = document.getElementById("dialog_content");
+
+var front_matter = "";
 
 
 
@@ -31,6 +34,7 @@ function toast(msg, timeout=3500) {
 
     setTimeout(() => {
         document.getElementById("toast").style.display = "none";
+        editor.focus();
     }, timeout);
 }
 
@@ -40,16 +44,19 @@ function toast(msg, timeout=3500) {
     dialog
 */
 
-function dialog(title, msg, content_editable=false) {
+function dialog(title, msg, content_editable=false, width=512, on_closed=function() {}) {
     document.getElementById("dialog_title").innerText = title;
 
-    document.getElementById("dialog_content").innerText = msg;
-    document.getElementById("dialog_content").contentEditable = content_editable;
+    dialog_content.innerText = msg;
+    dialog_content.contentEditable = content_editable;
+
+    document.getElementById("dialog_wrapper").style.width = width + "px";
 
     document.getElementById("dialog").style.display = "block";
 
     document.getElementById("dialog_close_btn").onclick = function() {
         document.getElementById("dialog").style.display = "none";
+        on_closed();
     }
 }
 
@@ -59,10 +66,57 @@ function dialog(title, msg, content_editable=false) {
     actions
 */
 
+const actions = document.getElementsByClassName("action");
+
+for (var i = 0; i < actions.length; i++) {
+    actions[i].onclick = function() {
+        switch(this.id) {
+            case "action_fm":
+                action_fm();
+                break;
+            
+            case "action_bold":
+                toast("wekpfokwepfok");
+                break;
+        
+            case "action_about":
+                action_about();
+                break;
+
+            default:
+                dialog("خطای نرم افزار", "عملکرد دکمه تعریف شده نیست!", false, 256);
+                break;
+        }
+    }
+}
+
+
+
+/*
+    action about
+*/
+
 function action_about() {
     dialog("درباره نویسکار", "نویسکار یک پروژه آزاد و متن باز بوده و توسط آکام توسعه داده شده است")
 }
 
-document.getElementById("action_about").onclick = function() {
-    action_about()
-};
+
+
+/*
+    action fm (front matter)
+*/
+
+function action_fm() {
+    dialog("اطلاعات مدرک", front_matter, true, 512, function() {
+        dialog_content.style.direction = "rtl";
+        dialog_content.style.textAlign = "right";
+    });
+
+    dialog_content.style.direction = "ltr";
+    dialog_content.style.textAlign = "left";
+    dialog_content.focus();
+
+    dialog_content.onkeydown = function() {
+        front_matter = this.innerText;
+    }
+}
