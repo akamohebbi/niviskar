@@ -44,8 +44,8 @@ function dialog(title, msg, content_editable=false) {
     document.getElementById("dialog_title").innerText = title;
 
     document.getElementById("dialog_content").innerText = msg;
-    document.getElementById("dialog_content").contenteditable = content_editable;
-    
+    document.getElementById("dialog_content").contentEditable = content_editable;
+
     document.getElementById("dialog").style.display = "block";
 
     document.getElementById("dialog_close_btn").onclick = function() {
@@ -53,6 +53,16 @@ function dialog(title, msg, content_editable=false) {
     }
 }
 
-setTimeout(() => {
-    dialog("fweiojfiowef", "fwejfwejfopwejfopwejfpoewjpfojwepofjwepofjwopejfpewojfpowejfpowejf", true)
-}, 3500);
+
+
+/*
+    actions
+*/
+
+function action_about() {
+    dialog("درباره نویسکار", "نویسکار یک پروژه آزاد و متن باز بوده و توسط آکام توسعه داده شده است")
+}
+
+document.getElementById("action_about").onclick = function() {
+    action_about()
+};

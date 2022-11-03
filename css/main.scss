@@ -34,7 +34,7 @@ body {
     }
 
     .w3-display-middle {
-        max-width: 512px;
+        width: 512px;
         background-color: white;
         color: black;
         border-radius: 8px;
@@ -64,6 +64,10 @@ body {
     #dialog_content {
         padding: 16px;
         font-size: .9em;
+        outline: none;
+        border-radius: 4px;
+        max-height: 512px;
+        overflow-y: auto;
     }
 }
 
@@ -139,6 +143,17 @@ body {
     background-color: azure;
     border-bottom: 1px solid #eee;    
     padding: 16px;
+}
+
+#tools {
+    float: left;
+
+    .action_group {
+        display: inline-block;
+
+        button {
+        }
+    }
 }
 
 
